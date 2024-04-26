@@ -1,12 +1,12 @@
-FROM shoothzj/compile:jdk17-mvn-jni AS compiler
+FROM shoothzj/compile:jdk21-mvn-jni AS compiler
 
 RUN git clone --depth 1 https://github.com/apache/bookkeeper.git && \
     cd bookkeeper && \
     mvn -B clean package -DskipTests=true && \
     mkdir -p /opt/bookkeeper && \
-    tar -xf /bookkeeper/bookkeeper-dist/all/target/bookkeeper-all-4.16.0-SNAPSHOT-bin.tar.gz -C /opt/bookkeeper --strip-components 1
+    tar -xf /bookkeeper/bookkeeper-dist/all/target/bookkeeper-all-4.18.0-SNAPSHOT-bin.tar.gz -C /opt/bookkeeper --strip-components 1
 
-FROM shoothzj/base:jdk17
+FROM shoothzj/base:jdk21
 
 COPY --from=compiler /opt/bookkeeper /opt/bookkeeper
 
