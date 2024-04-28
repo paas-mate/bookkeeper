@@ -16,3 +16,5 @@ RUN ln -s /opt/bookkeeper/bin/bookkeeper /usr/bin/bookkeeper && \
 ENV BOOKKEEPER_HOME /opt/bookkeeper
 
 WORKDIR /opt/bookkeeper
+
+ENTRYPOINT [ "/opt/bookkeeper/entrypoint.sh" ]
