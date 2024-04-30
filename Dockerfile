@@ -13,6 +13,8 @@ COPY --from=compiler /opt/bookkeeper /opt/bookkeeper
 RUN ln -s /opt/bookkeeper/bin/bookkeeper /usr/bin/bookkeeper && \
     ln -s /opt/bookkeeper/bin/bkctl /usr/bin/bkctl
 
+COPY --chmod=0755 entrypoint.sh /opt/bookkeeper/entrypoint.sh
+
 ENV BOOKKEEPER_HOME /opt/bookkeeper
 
 WORKDIR /opt/bookkeeper
